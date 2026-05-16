@@ -1,0 +1,136 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+
+  &.sidebar-open {
+    @media (max-width: 768px) {
+      overflow: hidden;
+      height: 100vh;
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.mobile-breadcrumbs {
+  display: none;
+  padding: 0 1rem 1rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  gap: 0.5rem;
+  align-items: center;
+
+  .separator {
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+
+  .active {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 1.4rem;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.separated_sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+
+  // box-shadow: var(--shadow-sm);
+
+
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width:767px) {
+    padding: 0.7rem;
+  }
+}
+
+.page-header {
+  margin-bottom: 0.5rem;
+}
+
+
+
+.footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 2rem;
+
+  button.firstarrowbtn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+
+  }
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  color: var(--primary);
+  font-weight: 500;
+  padding: 0.625rem 1rem;
+}
+
+@media (max-width: 1024px) {
+  .content-wrapper {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 1rem;
+  }
+}
+
+.placeholder-step {
+  padding: 4rem;
+  text-align: center;
+  background-color: var(--bg-card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-main);
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  font-weight: 500;
+}

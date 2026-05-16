@@ -1,0 +1,145 @@
+.topbar_wrapper {
+  padding: 1rem 1.4rem 0rem 1.4rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem 0rem 1rem;
+  }
+}
+
+.topbar {
+  height: var(--header-height);
+  background-color: var(--bg-sidebar);
+  // border-bottom: 1px solid var(--border-main);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .menu-toggle {
+    display: none;
+    color: var(--text-main);
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon-btn {
+  position: relative;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  color: var(--text-main);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--danger);
+  border: 2px solid var(--bg-sidebar);
+  border-radius: 50%;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.user-menu:hover {
+  background-color: var(--sidebar-hover-bg);
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.topbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.chevron {
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 1rem;
+  }
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    font-weight: 500;
+
+    .separator {
+      font-size: 0.8125rem;
+      opacity: 0.7;
+    }
+
+    .active {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+  }
+}
