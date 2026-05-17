@@ -4,11 +4,15 @@ import {
   Download,
   MoreVertical,
   Sun,
-  MoreHorizontal
+  MoreHorizontal,
+  BarChart2,
+  Hexagon,
+  CopyPlus
 } from 'lucide-react'
+import { Dropdown, Menu } from 'antd'
 import './CampaignList.scss'
-import { ExportbuttonIcon } from './BrandIcons';
-
+import { ExportbuttonIcon, SyncedIcon } from './BrandIcons';
+import syncedimg from '../images/synced.svg'
 const CampaignList = () => {
   const campaigns = [
     {
@@ -96,6 +100,20 @@ const CampaignList = () => {
     }
   ];
 
+  const actionMenu = (
+    <Menu className="campaign-action-menu">
+      <Menu.Item key="1" icon={<BarChart2 size={16} />}>
+        View Analytics
+      </Menu.Item>
+      <Menu.Item key="2" icon={<Hexagon size={16} />}>
+        Edit Sequence
+      </Menu.Item>
+      <Menu.Item key="3" icon={<CopyPlus size={16} />}>
+        Duplicate
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className="campaign-list-container">
       <div className='compaing-wrapper'>
@@ -161,11 +179,11 @@ const CampaignList = () => {
                   <td>
                     {camp.crm === 'Synced' ? (
                       <div className="crm-status synced">
-                        <Sun size={12} className="sun-icon" />
                         <div className="crm-text">
+                          <img src={syncedimg} alt="synced" />
                           <span className="synced-label">Synced</span>
-                          <span className="sync-time">{camp.crmTime}</span>
                         </div>
+                        <div className="sync-time">{camp.crmTime}</div>
                       </div>
                     ) : (
                       <button className="btn-sync">Sync to CRM</button>
@@ -205,13 +223,20 @@ const CampaignList = () => {
                     </span>
                   </td>
                   <td>
-                    <span className="limit-badge">{camp.limit}</span>
+                    <div className="limit-cell">
+                      <span className="limit-badge">{camp.limit}</span>
+                      <Dropdown overlay={actionMenu} trigger={['click']} placement="bottomRight">
+                        <button className="btn-more">
+                          <MoreVertical size={16} />
+                        </button>
+                      </Dropdown>
+                    </div>
                   </td>
-                  <td>
+                  {/* <td>
                     <button className="btn-more">
                       <MoreVertical size={16} />
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
