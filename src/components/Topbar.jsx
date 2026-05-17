@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { Bell, ChevronDown, Menu } from 'lucide-react'
+import Logo from './Logo'
 import './Topbar.scss'
 
 const Topbar = ({ onMenuClick }) => {
@@ -10,11 +11,11 @@ const Topbar = ({ onMenuClick }) => {
     <div className='topbar_wrapper'>
       <header className="topbar">
         <div className="topbar-left">
-          <button className="menu-toggle" onClick={onMenuClick}>
-            <Menu size={24} />
-          </button>
+          <div className="mobile-logo">
+            <Logo size={28} />
+          </div>
           <nav className="breadcrumbs">
-            <span>Campaign</span>
+            <span className="parent-path">Campaign</span>
             <span className="separator">{'>'}</span>
             <span className="active">
               {isCampaignList ? 'Campaign Listing' : 'Advance Campaign'}
@@ -23,6 +24,9 @@ const Topbar = ({ onMenuClick }) => {
         </div>
 
         <div className="topbar-right">
+          <button className="menu-toggle" onClick={onMenuClick}>
+            <Menu size={24} />
+          </button>
           <div className="user-menu">
             <div className="user-text">
               <span className="user-name">John Doe</span>

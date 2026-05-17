@@ -31,12 +31,12 @@ const Sidebar = ({ theme, toggleTheme, isOpen, onClose }) => {
 
         <nav className="sidebar-nav">
           <ul>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink to="/dashboard" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavClick}>
                 <LayoutDashboard size={20} />
                 <span>Dashboard</span>
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <NavLink to="/campaign" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={handleNavClick}>
                 <CompaignIcon />

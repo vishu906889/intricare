@@ -1,3 +1,5 @@
+@import "../styles/mixins.scss";
+
 .topbar_wrapper {
   padding: 1rem 1.4rem 0rem 1.4rem;
 
@@ -26,11 +28,8 @@
   align-items: center;
   gap: 1.5rem;
 
-  .menu-toggle {
+  .mobile-logo {
     display: none;
-    color: var(--text-main);
-    padding: 0.5rem;
-    margin-left: -0.5rem;
 
     @media (max-width: 768px) {
       display: flex;
@@ -44,6 +43,29 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+
+  .menu-toggle {
+    display: none;
+    color: var(--text-main);
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+
+    .user-text {
+      display: none;
+    }
+  }
 }
 
 .icon-btn {
@@ -123,14 +145,19 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    @include fluid-type(320px, 1920px, 14px, 20px);
     color: var(--text-muted);
+    font-weight: 400;
 
     @media (max-width: 768px) {
       display: none;
     }
 
-    font-weight: 500;
+
+
+    .parent-path {
+      color: #3666EE;
+    }
 
     .separator {
       font-size: 0.8125rem;
@@ -139,7 +166,7 @@
 
     .active {
       color: var(--text-main);
-      font-weight: 600;
+      font-weight: 400;
     }
   }
 }

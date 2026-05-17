@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { ChevronUp, ChevronDown, CheckCircle2 } from 'lucide-react'
-import { Steps } from 'antd'
+import { ChevronUp, ChevronDown, CheckCircle2, X, List } from 'lucide-react'
+import { Steps, Modal, Checkbox } from 'antd'
 import 'antd/dist/antd.css'
 import { LinkedinIcon, CsvIcon, AudienceIcon, LinkedinnewIcon, CalenderIcon, WebhookIcon, AudianceIcon } from './BrandIcons'
 import './ImportMethod.scss'
@@ -10,6 +10,20 @@ const { Step } = Steps;
 const ImportMethod = () => {
   const [selectedMethod, setSelectedMethod] = useState('lookalike')
   const [isExpanded, setIsExpanded] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedList, setSelectedList] = useState('founder')
+
+  const lookalikeLists = [
+    { id: 'founder', name: 'Founder', count: '1000+ Users in the List' },
+    { id: 'tech', name: 'Tech Profiles', count: '1000+ Users in the List' }
+  ]
+
+  const handleCardClick = (id) => {
+    setSelectedMethod(id);
+    if (id === 'lookalike') {
+      setIsModalOpen(true);
+    }
+  }
 
   const methods = [
     {
@@ -59,7 +73,7 @@ const ImportMethod = () => {
                     <div
                       key={method.id}
                       className={`method-card ${selectedMethod === method.id ? 'selected' : ''}`}
-                      onClick={() => setSelectedMethod(method.id)}
+                      onClick={() => handleCardClick(method.id)}
                     >
                       <div className="method-icon-wrapper">
                         {method.icon}
@@ -82,6 +96,49 @@ const ImportMethod = () => {
         />
         <Step disabled />
       </Steps>
+
+      <Modal
+        visible={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={null}
+        closeIcon={<X size={20} />}
+        className="lookalike-modal"
+        centered
+        width={600}
+      >
+        <div className="lookalike-modal-content">
+          <div className="modal-header">
+            <h2>Lookalikes</h2>
+            <p>Select a lookalike list for this campaign</p>
+          </div>
+          
+          <div className="lists-container">
+            {lookalikeLists.map(list => (
+              <div 
+                key={list.id} 
+                className={`list-item ${selectedList === list.id ? 'selected' : ''}`}
+                onClick={() => setSelectedList(list.id)}
+              >
+                <div className="list-item-left">
+                  <List size={18} className="list-icon" />
+                  <span className="list-name">{list.name}</span>
+                  <span className="list-count">({list.count})</span>
+                </div>
+                <Checkbox checked={selectedList === list.id} />
+              </div>
+            ))}
+          </div>
+
+          <div className="add-new-container">
+            <button className="btn-add-new">Add New</button>
+          </div>
+
+          <div className="modal-footer">
+            <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>Cancel</button>
+            <button className="btn-select" onClick={() => setIsModalOpen(false)}>Select List</button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
